@@ -1,10 +1,10 @@
 # Bogle Pay Gateway for WooCommerce
 
-Accept payments via Bogle Pay in your WooCommerce store. This plugin integrates Bogle Pay's secure hosted checkout with WooCommerce, allowing customers to pay with credit/debit cards.
+Accept payments via a hosted checkout in your WooCommerce store. This plugin integrates a secure hosted checkout with WooCommerce, allowing customers to pay with credit/debit cards.
 
 ## Features
 
-- **Hosted Checkout**: Secure, PCI-compliant payment page hosted by Bogle Pay
+- **Hosted Checkout**: Secure, PCI-compliant payment page hosted by the provider
 - **Sandbox Mode**: Test your integration before going live
 - **Webhook Support**: Automatic order updates via webhooks
 - **Refund Support**: Process refunds directly from WooCommerce (coming soon)
@@ -16,7 +16,7 @@ Accept payments via Bogle Pay in your WooCommerce store. This plugin integrates 
 - WooCommerce 5.0 or higher
 - PHP 7.4 or higher
 - SSL certificate (HTTPS required for production)
-- Bogle Pay merchant account
+- Merchant account with the payment provider
 
 ## Installation
 
@@ -38,16 +38,16 @@ Accept payments via Bogle Pay in your WooCommerce store. This plugin integrates 
 
 ### 1. Get Your API Keys
 
-> **Note**: The Bogle Pay API is hosted at `https://api.boglepay.com`.
+> **Note**: The provider API is hosted at `https://api.example.com`.
 
-Get your API keys from the Bogle Pay dashboard:
+Get your API keys from the provider dashboard:
 
 | Mode | API URL | API Key Prefix |
 |------|---------|----------------|
-| Sandbox | `https://api.boglepay.com` | `sb_*` |
-| Live | `https://api.boglepay.com` | `live_*` |
+| Sandbox | `https://api.example.com` | `sb_*` |
+| Live | `https://api.example.com` | `live_*` |
 
-> **Note**: The hosted checkout is always at `https://checkout.boglepay.com` - no configuration needed.
+> **Note**: The hosted checkout is always at `https://checkout.example.com` - no configuration needed.
 
 ### 2. Configure the Plugin
 
@@ -55,8 +55,8 @@ Get your API keys from the Bogle Pay dashboard:
 2. Click on "Bogle Pay" to configure
 3. Enable the payment method
 4. **Configure API URLs**:
-   - **Sandbox API URL**: `https://api.boglepay.com`
-   - **Live API URL**: `https://api.boglepay.com`
+   - **Sandbox API URL**: `https://api.example.com`
+   - **Live API URL**: `https://api.example.com`
 5. **Enter your API keys**:
    - **Sandbox API Key**: Starts with `sb_` (for testing)
    - **Live API Key**: Starts with `live_` (for production)
@@ -72,7 +72,7 @@ Get your API keys from the Bogle Pay dashboard:
 
 Webhooks ensure orders are updated even if customers don't return to your site.
 
-1. In your Bogle Pay Dashboard, go to **Settings → Webhooks**
+1. In your provider dashboard, go to **Settings → Webhooks**
 2. Add a new webhook with this URL:
    ```
    https://yourstore.com/wc-api/boglepay_webhook/
@@ -95,11 +95,11 @@ Webhooks ensure orders are updated even if customers don't return to your site.
 │  (Creates session with order details, returns cs_* token)       │
 │              │                                                  │
 │              ▼                                                  │
-│  Redirect to https://checkout.boglepay.com/c/cs_xxxxx           │
+│  Redirect to https://checkout.example.com/c/cs_xxxxx           │
 │              │                                                  │
 │              ▼                                                  │
 │  Customer pays on hosted checkout                               │
-│  (Card via Finix, or ACH via Plaid)                            │
+│  (Card or ACH via provider integrations)                       │
 │              │                                                  │
 │              ▼                                                  │
 │  Redirect back to WooCommerce success_url                       │
@@ -111,8 +111,8 @@ Webhooks ensure orders are updated even if customers don't return to your site.
 
 | Environment | Domain | Purpose |
 |-------------|--------|---------|
-| Hosted Checkout | `https://checkout.boglepay.com` | Customer payment UI |
-| API | `https://api.boglepay.com` | Bogle Pay API backend |
+| Hosted Checkout | `https://checkout.example.com` | Customer payment UI |
+| API | `https://api.example.com` | API backend |
 
 ### Required API Endpoints
 
@@ -149,7 +149,7 @@ In sandbox mode, you can use any valid card format:
 ### Verify Test Transactions
 
 1. Create a test order in your store
-2. Complete payment on the Bogle Pay checkout page
+2. Complete payment on the hosted checkout page
 3. Verify the order status updates in WooCommerce
 
 ## How It Works
@@ -178,11 +178,11 @@ In sandbox mode, you can use any valid card format:
 This error means the API URL is missing:
 
 1. Go to **WooCommerce → Settings → Payments → Bogle Pay**
-2. Enter `https://api.boglepay.com` for both Sandbox and Live API URLs
+2. Enter `https://api.example.com` for both Sandbox and Live API URLs
 
 ### Orders Stuck on "Pending"
 
-1. Check webhook configuration in Bogle Pay Dashboard
+1. Check webhook configuration in your provider dashboard
 2. Verify webhook URL is accessible (not blocked by firewall)
 3. Check WooCommerce logs: **WooCommerce → Status → Logs → boglepay**
 
@@ -190,14 +190,14 @@ This error means the API URL is missing:
 
 1. Verify API URL is configured and reachable
 2. Verify API key is correct for the selected mode (sandbox/live)
-3. Check that your Bogle Pay account is active
+3. Check that your provider account is active
 4. Enable debug logging and check error details
 
 ### API Connection Errors
 
 1. Test the API URL directly:
    ```bash
-   curl -I https://api.boglepay.com/health
+   curl -I https://api.example.com/health
    ```
 2. Check your internet connection
 3. Verify your API key is valid
@@ -213,11 +213,11 @@ This error means the API URL is missing:
 
 ### Is this plugin PCI compliant?
 
-Yes. Card details are entered on Bogle Pay's hosted checkout page, not your server. Your site never handles sensitive card data.
+Yes. Card details are entered on the hosted checkout page, not your server. Your site never handles sensitive card data.
 
 ### Can I customize the checkout page?
 
-The checkout page is hosted by Bogle Pay. Customization options are available in your Bogle Pay Dashboard.
+The checkout page is hosted by the provider. Customization options are available in your provider dashboard.
 
 ### Can I customize the redirect URLs?
 
@@ -245,9 +245,7 @@ Bogle Pay supports USD. Additional currencies coming soon.
 
 ## Support
 
-- **Documentation**: [docs.boglepay.com](https://docs.boglepay.com)
-- **Email**: support@boglepay.com
-- **GitHub Issues**: [Report a bug](https://github.com/boglepay/woocommerce-gateway/issues)
+Contact your payment provider support channel for help.
 
 ## Changelog
 

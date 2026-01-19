@@ -17,11 +17,11 @@ class BoglePay_Gateway extends WC_Payment_Gateway {
     /**
      * Hosted checkout domain
      * 
-     * The checkout UI is hosted at checkout.boglepay.com for both sandbox and production.
+     * The checkout UI is hosted at checkout.example.com for both sandbox and production.
      * The checkout page uses the session token (cs_*) for authentication and determines
      * the environment (sandbox/live) from the session data.
      */
-    const HOSTED_CHECKOUT_URL = 'https://checkout.boglepay.com';
+    const HOSTED_CHECKOUT_URL = 'https://checkout.example.com';
 
     /**
      * API client instance
@@ -163,14 +163,14 @@ class BoglePay_Gateway extends WC_Payment_Gateway {
             'api_url_settings' => array(
                 'title'       => __( 'API Configuration', 'boglepay-gateway' ),
                 'type'        => 'title',
-                'description' => __( 'Configure your Bogle Pay API endpoints. The default URL is https://api.boglepay.com', 'boglepay-gateway' ),
+                'description' => __( 'Configure your API endpoints. The default URL is https://api.example.com', 'boglepay-gateway' ),
             ),
             'sandbox_api_url' => array(
                 'title'       => __( 'Sandbox API URL', 'boglepay-gateway' ),
                 'type'        => 'text',
                 'description' => __( 'The Bogle Pay API URL for sandbox mode.', 'boglepay-gateway' ),
-                'default'     => 'https://api.boglepay.com',
-                'placeholder' => 'https://api.boglepay.com',
+                'default'     => 'https://api.example.com',
+                'placeholder' => 'https://api.example.com',
             ),
             'sandbox_api_key' => array(
                 'title'       => __( 'Sandbox API Key', 'boglepay-gateway' ),
@@ -183,8 +183,8 @@ class BoglePay_Gateway extends WC_Payment_Gateway {
                 'title'       => __( 'Live API URL', 'boglepay-gateway' ),
                 'type'        => 'text',
                 'description' => __( 'The Bogle Pay API URL for live/production mode.', 'boglepay-gateway' ),
-                'default'     => 'https://api.boglepay.com',
-                'placeholder' => 'https://api.boglepay.com',
+                'default'     => 'https://api.example.com',
+                'placeholder' => 'https://api.example.com',
             ),
             'live_api_key' => array(
                 'title'       => __( 'Live API Key', 'boglepay-gateway' ),

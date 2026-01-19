@@ -1,12 +1,12 @@
 # Testing WooCommerce Plugin
 
-This guide walks you through testing the Bogle Pay WooCommerce plugin.
+This guide walks you through testing the WooCommerce gateway plugin.
 
 ## Prerequisites
 
 - Docker and Docker Compose installed
-- A Bogle Pay merchant account with API keys
-- Access to the Bogle Pay dashboard
+- A merchant account with API keys
+- Access to the provider dashboard
 
 ## Quick Start
 
@@ -39,13 +39,13 @@ Access points:
 3. Click **Install Now**, then **Activate**
 4. Complete the WooCommerce setup wizard (or skip it)
 
-### 4. Activate Bogle Pay Plugin
+### 4. Activate the Plugin
 
 1. Go to **Plugins → Installed Plugins**
 2. Find "Bogle Pay Gateway for WooCommerce"
 3. Click **Activate**
 
-### 5. Configure Bogle Pay
+### 5. Configure the Gateway
 
 1. Go to **WooCommerce → Settings → Payments**
 2. Click **Bogle Pay** to configure
@@ -57,16 +57,8 @@ Access points:
 | Setting | Value |
 |---------|-------|
 | Sandbox Mode | ✅ Enabled |
-| Sandbox API URL | `https://api.boglepay.com` |
-| Sandbox API Key | Your `sb_*` key from the Bogle Pay dashboard |
-
-#### For Live Testing:
-
-| Setting | Value |
-|---------|-------|
-| Sandbox Mode | ❌ Disabled |
-| Live API URL | `https://api.boglepay.com` |
-| Live API Key | Your `live_*` key from the Bogle Pay dashboard |
+| Sandbox API URL | `https://api.example.com` |
+| Sandbox API Key | Your `sb_*` key from the provider dashboard |
 
 5. Click **Save changes**
 
@@ -74,12 +66,12 @@ Access points:
 
 ## Getting API Keys
 
-### From Bogle Pay Dashboard
+### From the Provider Dashboard
 
-1. Log in to https://dashboard.boglepay.com
+1. Log in to your provider dashboard
 2. Go to **Settings → API Keys**
 3. Create a new key:
-   - **Mode**: `sandbox` or `live`
+   - **Mode**: `sandbox` 
    - **Name**: `WooCommerce Plugin`
 4. Copy the secret key (only shown once!)
 
@@ -106,7 +98,7 @@ Access points:
    - Any name, address, email
 5. Select **Pay with Card** (Bogle Pay)
 6. Click **Place Order**
-7. You'll be redirected to `https://checkout.boglepay.com/c/cs_xxxxx`
+7. You'll be redirected to `https://checkout.example.com/c/cs_xxxxx`
 8. Complete payment with test card:
    - **Card**: `4111 1111 1111 1111`
    - **Expiry**: Any future date
@@ -136,7 +128,7 @@ brew install ngrok
 ngrok http 8080
 ```
 
-Copy the ngrok URL (e.g., `https://abc123.ngrok.io`) and configure webhook in Bogle Pay dashboard:
+Copy the ngrok URL (e.g., `https://abc123.ngrok.io`) and configure the webhook in your provider dashboard:
 
 ```
 https://abc123.ngrok.io/wc-api/boglepay_webhook/
@@ -165,8 +157,8 @@ Enable debug logging to troubleshoot issues:
 
 | Environment | API URL | Hosted Checkout | API Key Prefix |
 |-------------|---------|-----------------|----------------|
-| Sandbox | `https://api.boglepay.com` | `https://checkout.boglepay.com` | `sb_*` |
-| Production | `https://api.boglepay.com` | `https://checkout.boglepay.com` | `live_*` |
+| Sandbox | `https://api.example.com` | `https://checkout.example.com` | `sb_*` |
+| Production | `https://api.example.com` | `https://checkout.example.com` | `live_*` |
 
 ---
 
@@ -187,24 +179,24 @@ docker-compose down -v
 ### "No API URL configured"
 
 Ensure you've entered the API URL:
-- ✅ `https://api.boglepay.com`
+- ✅ `https://api.example.com`
 
 ### "Payment could not be initiated"
 
 1. Check API key is correct for the mode (sandbox key for sandbox mode)
 2. Verify API URL is reachable:
    ```bash
-   curl https://api.boglepay.com/health
+   curl https://api.example.com/health
    ```
 3. Enable debug logging and check WooCommerce logs
 
 ### Redirect not working
 
-1. Ensure `https://checkout.boglepay.com` is accessible
+1. Ensure `https://checkout.example.com` is accessible
 2. Check that the checkout session was created (check order meta for `_boglepay_checkout_session_id`)
 
 ### Webhook not updating order
 
 1. Verify webhook URL is publicly accessible (use ngrok for localhost)
 2. Check webhook signature secret matches
-3. View webhook logs in Bogle Pay dashboard
+3. View webhook logs in your provider dashboard

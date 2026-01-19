@@ -1,12 +1,12 @@
 # Bogle Pay WooCommerce Gateway
 
-Official WooCommerce payment gateway plugin for [Bogle Pay](https://boglepay.com).
+Official WooCommerce payment gateway plugin.
 
-Accept credit/debit card payments in your WooCommerce store with Bogle Pay's secure hosted checkout.
+Accept credit/debit card payments in your WooCommerce store with a secure hosted checkout.
 
 ## Features
 
-- **Hosted Checkout**: Secure, PCI-compliant payment page hosted by Bogle Pay
+- **Hosted Checkout**: Secure, PCI-compliant payment page hosted by the provider
 - **Sandbox Mode**: Test your integration before going live
 - **Webhook Support**: Automatic order updates via webhooks
 - **HPOS Compatible**: Works with WooCommerce High-Performance Order Storage
@@ -18,7 +18,7 @@ Accept credit/debit card payments in your WooCommerce store with Bogle Pay's sec
 - WooCommerce 5.0+
 - PHP 7.4+
 - SSL certificate (HTTPS required for production)
-- Bogle Pay merchant account
+- Merchant account with the payment provider
 
 ## Installation
 
@@ -41,9 +41,9 @@ Accept credit/debit card payments in your WooCommerce store with Bogle Pay's sec
 2. Click on **Bogle Pay** to configure
 3. Enable the payment method
 4. Enter your API credentials:
-   - **API URL**: `https://api.boglepay.com`
-   - **API Key**: Your key from the Bogle Pay dashboard (starts with `sb_` for sandbox or `live_` for production)
-5. Configure webhooks in your Bogle Pay dashboard with URL: `https://yourstore.com/wc-api/boglepay_webhook/`
+   - **API URL**: `https://api.example.com`
+   - **API Key**: Your key from the provider dashboard (starts with `sb_` for sandbox or `live_` for production)
+5. Configure webhooks in your provider dashboard with URL: `https://yourstore.com/wc-api/boglepay_webhook/`
 
 See [boglepay-gateway/README.md](boglepay-gateway/README.md) for detailed configuration instructions.
 
@@ -64,16 +64,6 @@ Access:
 
 See [TESTING.md](TESTING.md) for complete testing instructions.
 
-### Mock API Server
-
-For offline development, run the mock API server:
-
-```bash
-node mock-api-server.js
-```
-
-Then configure the plugin to use `http://localhost:3001` as the API URL.
-
 ### Building the Plugin ZIP
 
 ```bash
@@ -84,9 +74,7 @@ The ZIP file will be created in `dist/boglepay-gateway-{version}.zip`.
 
 ## Support
 
-- **Documentation**: [docs.boglepay.com](https://docs.boglepay.com)
-- **Email**: support@boglepay.com
-- **Issues**: [GitHub Issues](https://github.com/boglepay/boglepay-woocommerce/issues)
+Contact your payment provider support channel for help.
 
 ## License
 

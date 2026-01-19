@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Bogle Pay Gateway for WooCommerce
- * Plugin URI: https://boglepay.com/integrations/woocommerce
+ * Plugin URI: https://example.com/integrations/woocommerce
  * Description: Accept payments via Bogle Pay - a modern payment processing platform. Supports one-time payments and subscriptions.
  * Version: 1.0.0
  * Author: Bogle Pay
- * Author URI: https://boglepay.com
+ * Author URI: https://example.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: boglepay-gateway
