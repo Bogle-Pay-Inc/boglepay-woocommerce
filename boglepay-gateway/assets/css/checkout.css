@@ -13,12 +13,12 @@
 }
 
 .wc_payment_method.payment_method_boglepay:hover {
-    border-color: #2563eb;
+    border-color: #16a34a;
 }
 
 .wc_payment_method.payment_method_boglepay.checked {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 1px #2563eb;
+    border-color: #16a34a;
+    box-shadow: 0 0 0 1px #16a34a;
 }
 
 /* Payment method label */
@@ -112,7 +112,7 @@
     width: 24px;
     height: 24px;
     border: 3px solid #e0e0e0;
-    border-top-color: #2563eb;
+    border-top-color: #16a34a;
     border-radius: 50%;
     animation: boglepay-spin 0.8s linear infinite;
 }
@@ -129,8 +129,8 @@
     align-items: flex-start;
     gap: 12px;
     padding: 16px;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
     border-radius: 8px;
     margin-top: 12px;
 }
@@ -139,13 +139,13 @@
     flex-shrink: 0;
     width: 20px;
     height: 20px;
-    color: #2563eb;
+    color: #16a34a;
 }
 
 .boglepay-redirect-notice p {
     margin: 0;
     font-size: 14px;
-    color: #1e40af;
+    color: #166534;
     line-height: 1.5;
 }
 
