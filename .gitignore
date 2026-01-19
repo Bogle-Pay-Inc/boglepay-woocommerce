@@ -1,0 +1,28 @@
+# Build artifacts
+dist/
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Docker volumes (local only)
+wordpress_data/
+db_data/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local

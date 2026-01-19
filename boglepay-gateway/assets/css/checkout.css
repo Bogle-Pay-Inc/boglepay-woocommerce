@@ -1,0 +1,238 @@
+/**
+ * Bogle Pay Gateway - Checkout Styles
+ *
+ * @package BoglePay_Gateway
+ */
+
+/* Payment method styling */
+.wc_payment_method.payment_method_boglepay {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wc_payment_method.payment_method_boglepay:hover {
+    border-color: #2563eb;
+}
+
+.wc_payment_method.payment_method_boglepay.checked {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+
+/* Payment method label */
+.wc_payment_method.payment_method_boglepay label {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.wc_payment_method.payment_method_boglepay label img {
+    max-height: 24px;
+    margin-right: 12px;
+}
+
+/* Payment description box */
+.wc_payment_method.payment_method_boglepay .payment_box {
+    background: #f8fafc;
+    border-top: 1px solid #e0e0e0;
+    padding: 16px;
+    margin: 0;
+    border-radius: 0 0 7px 7px;
+}
+
+.wc_payment_method.payment_method_boglepay .payment_box p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Secure badge */
+.boglepay-secure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 6px;
+    color: #166534;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.boglepay-secure-badge svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+/* Card icons */
+.boglepay-card-icons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.boglepay-card-icons img {
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.boglepay-card-icons img:hover {
+    opacity: 1;
+}
+
+/* Loading state */
+.boglepay-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.boglepay-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boglepay-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e0e0e0;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: boglepay-spin 0.8s linear infinite;
+}
+
+@keyframes boglepay-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Redirect notice */
+.boglepay-redirect-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+.boglepay-redirect-notice svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #2563eb;
+}
+
+.boglepay-redirect-notice p {
+    margin: 0;
+    font-size: 14px;
+    color: #1e40af;
+    line-height: 1.5;
+}
+
+/* Error state */
+.boglepay-error {
+    padding: 12px 16px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    color: #dc2626;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+/* Admin settings styles */
+.boglepay-admin-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.boglepay-admin-header img {
+    height: 40px;
+}
+
+.boglepay-admin-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.boglepay-webhook-url {
+    display: block;
+    padding: 10px 14px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    font-size: 13px;
+    color: #475569;
+    word-break: break-all;
+    margin-top: 8px;
+}
+
+.boglepay-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #64748b;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.2s ease;
+}
+
+.boglepay-copy-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+.boglepay-copy-btn.copied {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #166534;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wc_payment_method.payment_method_boglepay label {
+        padding: 12px;
+    }
+    
+    .wc_payment_method.payment_method_boglepay .payment_box {
+        padding: 12px;
+    }
+    
+    .boglepay-redirect-notice {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
