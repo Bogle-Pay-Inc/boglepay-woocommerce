@@ -1,6 +1,8 @@
 # Build artifacts
-dist/
-*.zip
+#dist/
+#*.zip
+
+boglepay-gateway/
 
 # OS files
 .DS_Store
